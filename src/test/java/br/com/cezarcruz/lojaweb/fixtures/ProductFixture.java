@@ -4,9 +4,9 @@ import br.com.cezarcruz.lojaweb.entities.Product;
 
 import java.math.BigDecimal;
 
-public class ProdutoFixture {
+public class ProductFixture {
 
-    public static Product valoresPadrao() {
+    public static Product defaultValues() {
         return Product.builder()
                 .price(BigDecimal.TEN)
                 .name("Product")

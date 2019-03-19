@@ -1,7 +1,7 @@
 package br.com.cezarcruz.lojaweb.usecases;
 
 import br.com.cezarcruz.lojaweb.entities.Product;
-import br.com.cezarcruz.lojaweb.fixtures.ProdutoFixture;
+import br.com.cezarcruz.lojaweb.fixtures.ProductFixture;
 import br.com.cezarcruz.lojaweb.gateways.database.dao.ProductDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,9 +27,9 @@ public class CreateProductTest {
     private ProductDAO productDAO;
 
     @Test
-    public void deveCriarUmProduto() {
+    public void shouldCreateNewProduct() {
 
-        final Product productToSave = ProdutoFixture.valoresPadrao();
+        final Product productToSave = ProductFixture.defaultValues();
 
         when(productDAO.save(any())).thenReturn(productToSave.toBuilder().id(1L).build());
 
