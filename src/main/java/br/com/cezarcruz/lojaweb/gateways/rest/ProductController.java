@@ -3,10 +3,11 @@ package br.com.cezarcruz.lojaweb.gateways.rest;
 import br.com.cezarcruz.lojaweb.entities.Product;
 import br.com.cezarcruz.lojaweb.gateways.rest.request.IncludeProductRequest;
 import br.com.cezarcruz.lojaweb.gateways.rest.response.ProductResponse;
-import br.com.cezarcruz.lojaweb.gateways.rest.transformacao.IncludeProductRequestToProduct;
-import br.com.cezarcruz.lojaweb.gateways.rest.transformacao.ProductToProductResponse;
+import br.com.cezarcruz.lojaweb.gateways.rest.converters.IncludeProductRequestToProduct;
+import br.com.cezarcruz.lojaweb.gateways.rest.converters.ProductToProductResponse;
 import br.com.cezarcruz.lojaweb.usecases.CreateProduct;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,7 @@ public class ProductController {
 
         final ProductResponse productResponse = ProductToProductResponse.from(savedProduct);
 
-        return ResponseEntity.ok(productResponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productResponse);
 
     }
 
