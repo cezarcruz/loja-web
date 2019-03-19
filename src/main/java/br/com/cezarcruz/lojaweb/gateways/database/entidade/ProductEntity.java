@@ -1,4 +1,4 @@
-package br.com.cezarcruz.lojaweb.gateway.database.entidade;
+package br.com.cezarcruz.lojaweb.gateways.database.entidade;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,14 +10,14 @@ import java.math.BigDecimal;
 @Table(name = "produtos")
 @Data
 @Builder(toBuilder = true)
-public class ProdutoEntity {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-    private BigDecimal preco;
+    private String name;
+    private BigDecimal price;
 
 }
 

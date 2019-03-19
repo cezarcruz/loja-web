@@ -1,4 +1,4 @@
-package br.com.cezarcruz.lojaweb.entidade;
+package br.com.cezarcruz.lojaweb.entities;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,9 +7,9 @@ import java.math.BigDecimal;
 
 @Getter
 @Builder(toBuilder = true)
-public class Produto {
+public class Product {
 
     private Long id;
-    private String nome;
-    private BigDecimal preco;
+    private String name;
+    private BigDecimal price;
 }

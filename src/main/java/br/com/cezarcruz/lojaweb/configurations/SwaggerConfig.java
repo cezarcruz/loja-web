@@ -1,4 +1,4 @@
-package br.com.cezarcruz.lojaweb.configuracao;
+package br.com.cezarcruz.lojaweb.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
