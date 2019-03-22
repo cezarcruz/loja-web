@@ -5,9 +5,9 @@ cache:
   directories:
     - "$HOME/.m2"
     
+before_install:
+  - sudo apt-get install jq
+  - curl $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r '.assets | map({content_type, browser_download_url} | select(.content_type | contains("application/x-java-archive"))) | .[0].browser_download_url') -o codacy-coverage-reporter-assembly.jar
+
 after_success:
-  - LATEST_VERSION="$(curl -Ls https://api.bintray.com/packages/codacy/Binaries/codacy-coverage-reporter/versions/_latest | jq -r .name)"
-  - curl -Ls -o codacy-coverage-reporter "https://dl.bintray.com/codacy/Binaries/${LATEST_VERSION}/codacy-coverage-reporter-linux"
-  - chmod +x codacy-coverage-reporter
-  - ./codacy-coverage-reporter report -l Java -r build/reports/jacoco/test/jacocoTestReport.xml
-  
+  - java -jar ~/codacy-coverage-reporter-assembly.jar report -l Java -r build/reports/jacoco/test/jacocoTestReport.xml
