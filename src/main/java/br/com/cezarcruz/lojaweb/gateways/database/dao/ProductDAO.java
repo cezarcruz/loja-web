@@ -15,7 +15,7 @@ public class ProductDAO {
 
     public Product save(final Product product) {
 
-        final ProductEntity productEntity = ProductToProductEntity.de(product);
+        final ProductEntity productEntity = ProductToProductEntity.from(product);
         final ProductEntity savedProduct = productRepository.save(productEntity);
         return product.toBuilder().id(savedProduct.getId()).build();
 

@@ -1,23 +1,22 @@
 package br.com.cezarcruz.lojaweb.gateways.database.entidade;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
-@Entity
-@Table(name = "products")
 @Data
+@Entity
+@Table(name = "sellers")
 @Builder(toBuilder = true)
-public class ProductEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+public class SellerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private String document;
     private String name;
-    private BigDecimal price;
 
 }
-
