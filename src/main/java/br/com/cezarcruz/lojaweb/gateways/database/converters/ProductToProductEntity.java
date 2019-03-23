@@ -7,7 +7,7 @@ public class ProductToProductEntity {
 
     private ProductToProductEntity() {}
 
-    public static ProductEntity de(final Product product) {
+    public static ProductEntity from(final Product product) {
 
         return ProductEntity.builder()
                 .name(product.getName())

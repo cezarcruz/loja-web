@@ -1,16 +1,14 @@
 package br.com.cezarcruz.lojaweb.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Builder(toBuilder = true)
-public class Product {
+@AllArgsConstructor
+public class Seller {
 
-    private Long id;
+    private String document;
     private String name;
-    private BigDecimal price;
-
 }
