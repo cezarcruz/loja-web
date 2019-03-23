@@ -9,4 +9,4 @@ before_install:
   - wget https://github.com/codacy/codacy-coverage-reporter/releases/download/6.0.0/codacy-coverage-reporter-6.0.0-assembly.jar
 
 after_success:
-  - java -jar codacy-coverage-reporter-6.0.0-assembly.jar report -l Java -r target/site/jacoco/javaco.xml
+  - java -jar codacy-coverage-reporter-6.0.0-assembly.jar report -l Java -r target/site/jacoco/jacoco.xml
