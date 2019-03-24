@@ -5,6 +5,9 @@ import br.com.cezarcruz.lojaweb.gateways.database.entidade.SellerEntity;
 
 public class SellerToSellerEntity {
 
+    private SellerToSellerEntity() {
+    }
+
     public static SellerEntity from(final Seller seller) {
 
         return SellerEntity.builder()

@@ -4,6 +4,10 @@ import br.com.cezarcruz.lojaweb.entities.Seller;
 import br.com.cezarcruz.lojaweb.gateways.rest.request.CreateSellerRequest;
 
 public class IncludeSellerToSeller {
+
+    private IncludeSellerToSeller() {
+    }
+
     public static Seller from(CreateSellerRequest sellerRequest) {
 
         return Seller.builder()
