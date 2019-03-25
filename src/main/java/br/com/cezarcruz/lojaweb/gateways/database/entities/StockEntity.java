@@ -3,25 +3,23 @@ package br.com.cezarcruz.lojaweb.gateways.database.entities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
-@Table(name = "products")
+@Table(name = "stock")
 @Data
-@Builder(toBuilder = true)
 @AllArgsConstructor
-@NoArgsConstructor
-public class ProductEntity {
+@Builder(toBuilder = true)
+public class StockEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private BigDecimal price;
+    @ManyToOne(cascade = CascadeType.DETACH)
+    private ProductEntity product;
+
+    private Integer quantity;
 
 }
-
