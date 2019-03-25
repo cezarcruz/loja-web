@@ -1,7 +1,7 @@
 package br.com.cezarcruz.lojaweb.gateways.database.converters;
 
 import br.com.cezarcruz.lojaweb.entities.Seller;
-import br.com.cezarcruz.lojaweb.gateways.database.entidade.SellerEntity;
+import br.com.cezarcruz.lojaweb.gateways.database.entities.SellerEntity;
 
 public class SellerToSellerEntity {
 

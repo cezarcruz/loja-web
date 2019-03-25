@@ -2,7 +2,7 @@ package br.com.cezarcruz.lojaweb.gateways.database.dao;
 
 import br.com.cezarcruz.lojaweb.entities.Product;
 import br.com.cezarcruz.lojaweb.gateways.database.converters.ProductToProductEntity;
-import br.com.cezarcruz.lojaweb.gateways.database.entidade.ProductEntity;
+import br.com.cezarcruz.lojaweb.gateways.database.entities.ProductEntity;
 import br.com.cezarcruz.lojaweb.gateways.database.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

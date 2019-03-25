@@ -1,4 +1,4 @@
-package br.com.cezarcruz.lojaweb.gateways.database.entidade;
+package br.com.cezarcruz.lojaweb.gateways.database.entities;
 
 import lombok.Builder;
 import lombok.Data;
