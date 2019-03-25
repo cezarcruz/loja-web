@@ -7,6 +7,8 @@ import br.com.cezarcruz.lojaweb.gateways.database.repositories.ProductRepository
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class ProductDAO {
@@ -17,7 +19,14 @@ public class ProductDAO {
 
         final ProductEntity productEntity = ProductToProductEntity.from(product);
         final ProductEntity savedProduct = productRepository.save(productEntity);
+
         return product.toBuilder().id(savedProduct.getId()).build();
 
     }
+
+    public Optional<Product> findById(final Long id) {
+        final Optional<ProductEntity> productEntity = productRepository.findById(id);
+        return productEntity.map(ProductToProductEntity::from);
+    }
+
 }

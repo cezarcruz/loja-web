@@ -16,4 +16,14 @@ public class ProductToProductEntity {
 
     }
 
+    public static Product from(final ProductEntity productEntity) {
+
+        return Product.builder()
+                .name(productEntity.getName())
+                .id(productEntity.getId())
+                .price(productEntity.getPrice())
+                .build();
+
+    }
+
 }

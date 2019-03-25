@@ -13,4 +13,12 @@ public class ProductFixture {
                 .build();
     }
 
+    public static Product defaultValuesWithId() {
+        return defaultValues().toBuilder().id(1L).build();
+    }
+
+    public static Product defaultValuesWithId(final Long id) {
+        return defaultValues().toBuilder().id(id).build();
+    }
+
 }
