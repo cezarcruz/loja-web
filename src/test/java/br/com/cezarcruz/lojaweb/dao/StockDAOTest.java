@@ -26,7 +26,7 @@ public class StockDAOTest {
     private ProductDAO productDAO;
 
     @Test(expected = ProductNotExistException.class)
-    public void shouldIncludeNewProductInStockWithId() {
+    public void shouldThrowWhenProductNotExist() {
 
         final Product product = ProductFixture.defaultValuesWithId();
 
