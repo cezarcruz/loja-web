@@ -1,9 +1,13 @@
 package br.com.cezarcruz.lojaweb.controllers;
 
 import br.com.cezarcruz.lojaweb.entities.Product;
+import br.com.cezarcruz.lojaweb.entities.Stock;
 import br.com.cezarcruz.lojaweb.fixtures.IncludeProductRequestFixture;
+import br.com.cezarcruz.lojaweb.fixtures.StockFixture;
 import br.com.cezarcruz.lojaweb.gateways.rest.request.IncludeProductRequest;
+import br.com.cezarcruz.lojaweb.gateways.rest.request.IncludeStockRequest;
 import br.com.cezarcruz.lojaweb.usecases.CreateProduct;
+import br.com.cezarcruz.lojaweb.usecases.IncludeInStock;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +38,9 @@ public class ProductControllerTest {
     @MockBean
     private CreateProduct createProduct;
 
+    @MockBean
+    private IncludeInStock includeInStock;
+
     @Test
     public void shouldCreateNewProduct() throws Exception {
 
@@ -60,6 +67,29 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.name").value(includeProductRequest.getName()))
                 .andExpect(jsonPath("$.price").value(includeProductRequest.getPrice()));
 
+    }
+
+    @Test
+    public void shouldCreateStock() throws Exception {
+        final Stock stock = StockFixture.withDefaultValues();
+
+        final ObjectMapper objectMapper = new ObjectMapper();
+
+        when(includeInStock.execute(any()))
+                .thenReturn(stock);
+
+
+        final IncludeStockRequest includeStockRequest = IncludeStockRequest.builder().quantity(10).build();
+
+        mockMvc.perform(
+                post("/products/1/stock")
+                        .content(objectMapper.writeValueAsString(includeStockRequest))
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+        ).andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.quantity").value(includeStockRequest.getQuantity()))
+                .andExpect(jsonPath("$.product.name").value(stock.getProduct().getName()))
+                ;
     }
 
 }
