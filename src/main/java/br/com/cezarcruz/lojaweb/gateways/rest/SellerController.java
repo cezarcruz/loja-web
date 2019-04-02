@@ -24,11 +24,11 @@ public class SellerController {
     @PostMapping
     public ResponseEntity<SellerResponse> createSeller(@RequestBody final CreateSellerRequest sellerRequest) {
 
-        final Seller seller = IncludeSellerToSeller.from(sellerRequest);
+        final var seller = IncludeSellerToSeller.from(sellerRequest);
 
-        final Seller savedSeller = createSeller.execute(seller);
+        final var savedSeller = createSeller.execute(seller);
 
-        final SellerResponse sellerResponse = SellerToSellerResponse.from(savedSeller);
+        final var sellerResponse = SellerToSellerResponse.from(savedSeller);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(sellerResponse);
     }

@@ -17,15 +17,15 @@ public class ProductDAO {
 
     public Product save(final Product product) {
 
-        final ProductEntity productEntity = ProductToProductEntity.from(product);
-        final ProductEntity savedProduct = productRepository.save(productEntity);
+        final var productEntity = ProductToProductEntity.from(product);
+        final var savedProduct = productRepository.save(productEntity);
 
         return product.toBuilder().id(savedProduct.getId()).build();
 
     }
 
     public Optional<Product> findById(final Long id) {
-        final Optional<ProductEntity> productEntity = productRepository.findById(id);
+        final var productEntity = productRepository.findById(id);
         return productEntity.map(ProductToProductEntity::from);
     }
 

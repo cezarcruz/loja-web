@@ -2,10 +2,11 @@ package br.com.cezarcruz.lojaweb.entities;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Value;
 
 import java.math.BigDecimal;
 
-@Getter
+@Value
 @Builder(toBuilder = true)
 public class Product {
 
