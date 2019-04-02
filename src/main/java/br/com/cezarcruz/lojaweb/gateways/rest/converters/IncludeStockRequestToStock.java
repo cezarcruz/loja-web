@@ -5,6 +5,10 @@ import br.com.cezarcruz.lojaweb.entities.Stock;
 import br.com.cezarcruz.lojaweb.gateways.rest.request.IncludeStockRequest;
 
 public class IncludeStockRequestToStock {
+
+    private IncludeStockRequestToStock() {
+    }
+
     public static Stock from(final Long productId,
                              final IncludeStockRequest includeStockRequest) {
 

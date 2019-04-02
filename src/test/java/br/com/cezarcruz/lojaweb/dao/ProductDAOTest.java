@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import java.util.Optional;
+
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,5 +30,24 @@ public class ProductDAOTest {
         assertNotNull(productSaved.getId());
         assertEquals(productToSave.getName(), productSaved.getName());
         assertEquals(productToSave.getPrice(), productSaved.getPrice());
+    }
+
+    @Test
+    public void shouldGetProductById() {
+        final var productToSave = ProductFixture.defaultValues();
+        final var productSaved = productDAO.save(productToSave);
+
+        assertNotNull(productSaved);
+
+        Optional<Product> byId = productDAO.findById(productSaved.getId());
+
+        assertNotNull(byId);
+
+        if (byId.isEmpty()) {
+            fail();
+        }
+
+        assertNotNull(byId.get());
+        assertEquals(productSaved.getId(), byId.get().getId());
     }
 }

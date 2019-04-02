@@ -5,6 +5,9 @@ import br.com.cezarcruz.lojaweb.gateways.rest.response.StockResponse;
 
 public class StockToStockResponse {
 
+    private StockToStockResponse() {
+    }
+
     public static StockResponse from(final Stock stockUpdated) {
 
         return StockResponse.builder()
