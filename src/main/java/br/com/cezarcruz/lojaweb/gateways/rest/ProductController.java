@@ -28,10 +28,10 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@RequestBody IncludeProductRequest productRequest) {
 
-        final Product product = IncludeProductRequestToProduct.from(productRequest);
-        final Product savedProduct = createProduct.execute(product);
+        final var product = IncludeProductRequestToProduct.from(productRequest);
+        final var savedProduct = createProduct.execute(product);
 
-        final ProductResponse productResponse = ProductToProductResponse.from(savedProduct);
+        final var productResponse = ProductToProductResponse.from(savedProduct);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(productResponse);
 
@@ -41,11 +41,11 @@ public class ProductController {
     public ResponseEntity<StockResponse> includeInStock(@PathVariable final Long productId,
                                                         @RequestBody IncludeStockRequest includeStockRequest) {
 
-        final Stock stock = IncludeStockRequestToStock.from(productId, includeStockRequest);
+        final var stock = IncludeStockRequestToStock.from(productId, includeStockRequest);
 
-        final Stock stockUpdated = includeInStock.execute(stock);
+        final var stockUpdated = includeInStock.execute(stock);
 
-        final StockResponse stockResponse = StockToStockResponse.from(stockUpdated);
+        final var stockResponse = StockToStockResponse.from(stockUpdated);
 
         return ResponseEntity.ok(stockResponse);
 

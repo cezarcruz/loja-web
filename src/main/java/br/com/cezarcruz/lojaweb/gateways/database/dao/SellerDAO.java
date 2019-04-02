@@ -16,7 +16,7 @@ public class SellerDAO {
 
     public Seller save(final Seller seller) {
 
-        final SellerEntity entity = SellerToSellerEntity.from(seller);
+        final var entity = SellerToSellerEntity.from(seller);
 
         sellerRepository.save(entity);
         return seller.toBuilder().build();

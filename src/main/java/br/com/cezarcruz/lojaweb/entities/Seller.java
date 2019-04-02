@@ -1,12 +1,10 @@
 package br.com.cezarcruz.lojaweb.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Value;
 
-@Getter
+@Value
 @Builder(toBuilder = true)
-@AllArgsConstructor
 public class Seller {
 
     private String document;
