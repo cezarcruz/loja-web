@@ -48,6 +48,13 @@ public class ProductController {
     }
 
     @PostMapping("/{productId}/stock")
+    @ApiOperation(value = "Include Product in stock")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Product include in stock successfully"),
+            @ApiResponse(code = 400, message = "API doesn't recognize sent parameters"),
+            @ApiResponse(code = 404, message = "Product doesn't exists"),
+            @ApiResponse(code = 500, message = "Internal Server Error"),
+    })
     public ResponseEntity<StockResponse> includeInStock(@PathVariable final Long productId,
                                                         @RequestBody IncludeStockRequest includeStockRequest) {
 

@@ -1,7 +1,7 @@
 package br.com.cezarcruz.lojaweb.gateways.database.dao;
 
 import br.com.cezarcruz.lojaweb.entities.Stock;
-import br.com.cezarcruz.lojaweb.exceptions.ProductNotExistException;
+import br.com.cezarcruz.lojaweb.exceptions.ProductNotFoundException;
 import br.com.cezarcruz.lojaweb.gateways.database.converters.StockToStockEntity;
 import br.com.cezarcruz.lojaweb.gateways.database.entities.ProductEntity;
 import br.com.cezarcruz.lojaweb.gateways.database.entities.StockEntity;
@@ -28,7 +28,7 @@ public class StockDAO {
 
         final ProductEntity productEntity
                 = productRepository.findById(stock.getProduct().getId())
-                    .orElseThrow((Supplier<RuntimeException>) ProductNotExistException::new);
+                    .orElseThrow((Supplier<RuntimeException>) ProductNotFoundException::new);
 
         final StockEntity stockEntity
                 = StockToStockEntity.from(stock);

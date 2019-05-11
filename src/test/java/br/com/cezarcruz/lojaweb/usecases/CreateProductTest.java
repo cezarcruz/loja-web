@@ -19,7 +19,6 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class CreateProductTest {
 
-
     @InjectMocks
     public CreateProduct createProduct;
 

@@ -2,6 +2,7 @@ package br.com.cezarcruz.lojaweb.controllers;
 
 import br.com.cezarcruz.lojaweb.entities.Product;
 import br.com.cezarcruz.lojaweb.entities.Stock;
+import br.com.cezarcruz.lojaweb.exceptions.ProductNotFoundException;
 import br.com.cezarcruz.lojaweb.fixtures.IncludeProductRequestFixture;
 import br.com.cezarcruz.lojaweb.fixtures.StockFixture;
 import br.com.cezarcruz.lojaweb.gateways.rest.request.IncludeProductRequest;
@@ -78,7 +79,6 @@ public class ProductControllerTest {
         when(includeInStock.execute(any()))
                 .thenReturn(stock);
 
-
         final IncludeStockRequest includeStockRequest = IncludeStockRequest.builder().quantity(10).build();
 
         mockMvc.perform(
@@ -90,6 +90,27 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.quantity").value(includeStockRequest.getQuantity()))
                 .andExpect(jsonPath("$.product.name").value(stock.getProduct().getName()))
                 ;
+    }
+
+    @Test
+    public void shouldHandleProductNotFoundWhenAddStock() throws Exception {
+
+        final ObjectMapper objectMapper = new ObjectMapper();
+
+        when(includeInStock.execute(any()))
+                .thenThrow(new ProductNotFoundException());
+
+        final IncludeStockRequest includeStockRequest = IncludeStockRequest.builder().quantity(10).build();
+
+        mockMvc.perform(
+                post("/products/2/stock")
+                        .content(objectMapper.writeValueAsString(includeStockRequest))
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+        ).andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value(404))
+                .andExpect(jsonPath("$.message").value("Product not found"))
+        ;
     }
 
 }

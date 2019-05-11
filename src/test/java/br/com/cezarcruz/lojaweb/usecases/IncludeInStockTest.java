@@ -1,7 +1,7 @@
 package br.com.cezarcruz.lojaweb.usecases;
 
 import br.com.cezarcruz.lojaweb.entities.Stock;
-import br.com.cezarcruz.lojaweb.exceptions.ProductNotExistException;
+import br.com.cezarcruz.lojaweb.exceptions.ProductNotFoundException;
 import br.com.cezarcruz.lojaweb.fixtures.ProductFixture;
 import br.com.cezarcruz.lojaweb.fixtures.StockFixture;
 import br.com.cezarcruz.lojaweb.gateways.database.dao.ProductDAO;
@@ -34,7 +34,7 @@ public class IncludeInStockTest {
     @Mock
     private ProductDAO productDAO;
 
-    @Test(expected = ProductNotExistException.class)
+    @Test(expected = ProductNotFoundException.class)
     public void shouldThrowWhenProductNotExist() {
         when(productDAO.findById(anyLong()))
                 .thenReturn(Optional.empty());

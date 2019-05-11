@@ -2,7 +2,7 @@ package br.com.cezarcruz.lojaweb.dao;
 
 import br.com.cezarcruz.lojaweb.entities.Product;
 import br.com.cezarcruz.lojaweb.entities.Stock;
-import br.com.cezarcruz.lojaweb.exceptions.ProductNotExistException;
+import br.com.cezarcruz.lojaweb.exceptions.ProductNotFoundException;
 import br.com.cezarcruz.lojaweb.fixtures.ProductFixture;
 import br.com.cezarcruz.lojaweb.gateways.database.converters.ProductToProductEntity;
 import br.com.cezarcruz.lojaweb.gateways.database.dao.ProductDAO;
@@ -41,7 +41,7 @@ public class StockDAOTest {
     @Autowired
     private ProductDAO productDAO;
 
-    @Test(expected = ProductNotExistException.class)
+    @Test(expected = ProductNotFoundException.class)
     public void shouldThrowWhenProductNotExist() {
 
         final Product product = ProductFixture.defaultValuesWithId();

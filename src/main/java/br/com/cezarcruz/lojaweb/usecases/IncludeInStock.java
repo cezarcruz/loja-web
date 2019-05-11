@@ -1,7 +1,7 @@
 package br.com.cezarcruz.lojaweb.usecases;
 
 import br.com.cezarcruz.lojaweb.entities.Stock;
-import br.com.cezarcruz.lojaweb.exceptions.ProductNotExistException;
+import br.com.cezarcruz.lojaweb.exceptions.ProductNotFoundException;
 import br.com.cezarcruz.lojaweb.gateways.database.dao.ProductDAO;
 import br.com.cezarcruz.lojaweb.gateways.database.dao.StockDAO;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class IncludeInStock {
     public Stock execute(final Stock stock) {
 
         productDAO.findById(stock.getProduct().getId())
-                    .orElseThrow((Supplier<RuntimeException>) ProductNotExistException::new);
+                    .orElseThrow((Supplier<RuntimeException>) ProductNotFoundException::new);
 
         return stockDAO.save(stock);
     }
