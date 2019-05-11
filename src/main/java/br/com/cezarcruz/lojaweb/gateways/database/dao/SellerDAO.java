@@ -13,7 +13,6 @@ public class SellerDAO {
 
     private SellerRepository sellerRepository;
 
-
     public Seller save(final Seller seller) {
 
         final var entity = SellerToSellerEntity.from(seller);
